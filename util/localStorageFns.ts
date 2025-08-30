@@ -39,6 +39,15 @@ export const createLocalStorageUser = (name: string) => {
 export const addUserVotesToLocalStorage = (newVotes: UserVotesType[]) => {
   const user: LSUserType | null = getUserFromLocalStorage()
   if (!user) return console.error('USER NOT FOUND, SOMETHING WENT WRONG')
+  const updatedUser = { ...user, votes: newVotes }
+  localStorage.setItem(LS_USER_STRING, JSON.stringify(updatedUser))
+}
 
-  user.votes = newVotes
+export const hasUserCastVotes = () => {
+  const user = getUserFromLocalStorage()
+  if (!user) return false
+
+  return user.votes.every(
+    vote => vote.votedOnDragonID !== null && vote.votedOnDragonID !== ''
+  )
 }

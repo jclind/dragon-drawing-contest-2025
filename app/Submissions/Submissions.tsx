@@ -13,6 +13,7 @@ import {
   addUserVotesToLocalStorage,
   getUserFromLocalStorage,
   getUserVotesFromLocalStorage,
+  hasUserCastVotes,
 } from '@/util/localStorageFns'
 
 export type UserVotesType = { id: string; votedOnDragonID: string | null }
@@ -39,6 +40,8 @@ const Submissions = () => {
   )
   const [isLeaderboardPage, setIsLeaderboardPage] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  const hasVoted = hasUserCastVotes()
 
   const isLastCategory =
     categories[categories.length - 1].id === currCategory?.id
@@ -126,10 +129,10 @@ const Submissions = () => {
   }
 
   const handleSubmitVotes = () => {
-    addUserVotesToLocalStorage(userVotes)
     setLoading(true)
     submitUserVotes(userVotes)
       .then(() => {
+        addUserVotesToLocalStorage(userVotes)
         setIsLeaderboardPage(true)
         setIsConfirmPage(false)
       })
@@ -143,7 +146,7 @@ const Submissions = () => {
 
   return (
     <div className={`${styles.Submissions} card`}>
-      {true ? (
+      {hasVoted ? (
         <LeaderboardPage />
       ) : !localStorageUserExists ? (
         <RegisterVoterPage
@@ -155,7 +158,7 @@ const Submissions = () => {
         <LeaderboardPage />
       ) : (
         <>
-          <h2>Submissions</h2>
+          <h2 className={styles.submissionsTitle}>Submissions</h2>
           <p className={styles.description}>
             Vote for which dragon best represents the current category.
           </p>

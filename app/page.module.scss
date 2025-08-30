@@ -3,6 +3,8 @@
 .page {
   width: 100%;
   padding: 60px 12px;
+  max-width: 500px;
+  margin: 0 auto;
 
   .background {
     z-index: -1;

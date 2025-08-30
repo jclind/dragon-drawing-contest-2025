@@ -1,0 +1,23 @@
+@use '@/styles/vars' as *;
+
+.Navbar {
+  position: absolute;
+  // top: 24px;
+  // left: 24px;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  padding: 24px;
+  .inner {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .links {
+    display: flex;
+    gap: 30px;
+    a {
+      color: $primary-text;
+      font-size: $fs-regular;
+    }
+  }
+}

@@ -18,7 +18,7 @@
     margin-bottom: 24px;
     font-weight: 400;
   }
-  p.categoryName {
+  .categoryName {
     font-size: $fs-small;
     font-weight: 700;
     margin-bottom: 24px;
@@ -26,14 +26,30 @@
     width: 100%;
     color: #4e775b;
     text-align: center;
-    padding: 8px;
     font-size: $fs-regular;
+    button {
+      position: relative;
+      background: none;
+      width: 100%;
+      padding: 8px;
+      color: #4e775b;
+      text-align: center;
+      font-size: $fs-regular;
+      padding-right: 40px;
+      .icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      label {
+        font-weight: 700;
+        margin-right: 8px;
+        font-size: $fs-small;
+      }
+    }
     span {
       text-decoration: underline;
-    }
-    label {
-      font-weight: 700;
-      margin-right: 4px;
     }
   }
 

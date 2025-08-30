@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Submissions.module.scss'
 import { submissions } from '@/data/submissions'
-import { Check } from 'lucide-react'
+import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { getTopVotes, submitUserVotes, VoteCount } from '@/lib/votes'
 import { categories, CategoryType } from '@/data/categories'
 import LeaderboardPage from './LeaderboardPage'
@@ -15,6 +15,7 @@ import {
   getUserVotesFromLocalStorage,
   hasUserCastVotes,
 } from '@/util/localStorageFns'
+import CategoriesList from '../CategoriesList'
 
 export type UserVotesType = { id: string; votedOnDragonID: string | null }
 
@@ -27,6 +28,9 @@ const Submissions = () => {
   const [currCategory, setCurrCategory] = useState<
     (typeof categories)[0] | null
   >(categories[0])
+  const currCategoryIndex = categories.findIndex(
+    cat => cat.id === currCategory?.id
+  )
   const [castVoteID, setCastVoteID] = useState<string | null>(null)
   const [userVotes, setUserVotes] = useState<UserVotesType[]>(() => {
     const lsVotes = getUserVotesFromLocalStorage()
@@ -40,6 +44,8 @@ const Submissions = () => {
   )
   const [isLeaderboardPage, setIsLeaderboardPage] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  const [isCategoriesVisible, setIsCategoriesVisible] = useState(false)
 
   const hasVoted = hasUserCastVotes()
 
@@ -145,90 +151,107 @@ const Submissions = () => {
     (castVoteID || !isFirstCategory) && !isLeaderboardPage
 
   return (
-    <div className={`${styles.Submissions} card`}>
-      {hasVoted ? (
-        <LeaderboardPage />
-      ) : !localStorageUserExists ? (
-        <RegisterVoterPage
-          setLocalStorageUserExists={setLocalStorageUserExists}
-        />
-      ) : isConfirmPage ? (
-        <ConfirmVotesPage userVotes={userVotes} />
-      ) : isLeaderboardPage ? (
-        <LeaderboardPage />
-      ) : (
-        <>
-          <h2 className={styles.submissionsTitle}>Submissions</h2>
-          <p className={styles.description}>
-            Vote for which dragon best represents the current category.
-          </p>
-          <p className={styles.categoryName}>
-            <label>Category:</label>
-            <span>{currCategory?.name}</span>
-          </p>
-          <div className={styles.list}>
-            {submissions.map(dragon => {
-              return (
-                <div className={styles.dragonItem} key={dragon.creator}>
-                  <div className={styles.imageContainer}>
-                    {dragon.id === castVoteID && (
-                      <div className={styles.selectedCheck}>
-                        <Check />
-                      </div>
-                    )}
-                    <img src={dragon.imageSrc} alt='' />
-                  </div>
-                  <div className={styles.info}>
-                    <div className={styles.row}>
-                      <label htmlFor=''>Artist:</label>
-                      <span>{dragon.creator}</span>
+    <>
+      {/* <CategoriesList selectedCategory={currCategory} /> */}
+      <div className={`${styles.Submissions} card`}>
+        {hasVoted ? (
+          <LeaderboardPage />
+        ) : !localStorageUserExists ? (
+          <RegisterVoterPage
+            setLocalStorageUserExists={setLocalStorageUserExists}
+          />
+        ) : isConfirmPage ? (
+          <ConfirmVotesPage userVotes={userVotes} />
+        ) : isLeaderboardPage ? (
+          <LeaderboardPage />
+        ) : (
+          <>
+            <h2 className={styles.submissionsTitle}>Submissions</h2>
+            <p className={styles.description}>
+              Vote for which dragon best represents the current category.
+            </p>
+            <div className={styles.categoryName}>
+              <button onClick={() => setIsCategoriesVisible(prev => !prev)}>
+                <label>
+                  Category ({currCategoryIndex + 1} / {categories.length}):
+                </label>
+                <span>{currCategory?.name}</span>
+                {isCategoriesVisible ? (
+                  <ChevronUp className={styles.icon} />
+                ) : (
+                  <ChevronDown className={styles.icon} />
+                )}
+              </button>
+              {isCategoriesVisible && (
+                <CategoriesList selectedCategory={currCategory} />
+              )}
+            </div>
+            <div className={styles.list}>
+              {submissions.map(dragon => {
+                return (
+                  <div className={styles.dragonItem} key={dragon.creator}>
+                    <div className={styles.imageContainer}>
+                      {dragon.id === castVoteID && (
+                        <div className={styles.selectedCheck}>
+                          <Check />
+                        </div>
+                      )}
+                      <img src={dragon.imageSrc} alt='' />
                     </div>
+                    <div className={styles.info}>
+                      <div className={styles.row}>
+                        <label htmlFor=''>Artist:</label>
+                        <span>{dragon.creator}</span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() =>
+                        handleDragonVote(dragon.id, currCategory?.id || '')
+                      }
+                      className={
+                        castVoteID === dragon.id ? styles.selected : ''
+                      }
+                    >
+                      {!castVoteID
+                        ? 'Cast Vote'
+                        : castVoteID === dragon.id
+                        ? 'Dragon Selected'
+                        : 'Switch Vote'}
+                    </button>
                   </div>
-                  <button
-                    onClick={() =>
-                      handleDragonVote(dragon.id, currCategory?.id || '')
-                    }
-                    className={castVoteID === dragon.id ? styles.selected : ''}
-                  >
-                    {!castVoteID
-                      ? 'Cast Vote'
-                      : castVoteID === dragon.id
-                      ? 'Dragon Selected'
-                      : 'Switch Vote'}
-                  </button>
-                </div>
-              )
-            })}
-          </div>
-        </>
-      )}
+                )
+              })}
+            </div>
+          </>
+        )}
 
-      {showVotingToolbar ? (
-        <div className={`${styles.nextCategoryContainer} card`}>
-          {!isFirstCategory && (
-            <button
-              disabled={loading}
-              onClick={() => handlePrevCategoryClick(currCategory)}
-            >
-              Prev Category
-            </button>
-          )}
-          {castVoteID && !isConfirmPage && (
-            <button
-              disabled={loading}
-              onClick={() => handleNextCategoryClick(currCategory)}
-            >
-              {isLastCategory ? 'Confirm Votes Page' : 'Next Category'}
-            </button>
-          )}
-          {isConfirmPage && (
-            <button disabled={loading} onClick={handleSubmitVotes}>
-              {loading ? 'loading...' : 'Submit Votes!'}
-            </button>
-          )}
-        </div>
-      ) : null}
-    </div>
+        {showVotingToolbar ? (
+          <div className={`${styles.nextCategoryContainer} card`}>
+            {!isFirstCategory && (
+              <button
+                disabled={loading}
+                onClick={() => handlePrevCategoryClick(currCategory)}
+              >
+                Prev Category
+              </button>
+            )}
+            {castVoteID && !isConfirmPage && (
+              <button
+                disabled={loading}
+                onClick={() => handleNextCategoryClick(currCategory)}
+              >
+                {isLastCategory ? 'Confirm Votes Page' : 'Next Category'}
+              </button>
+            )}
+            {isConfirmPage && (
+              <button disabled={loading} onClick={handleSubmitVotes}>
+                {loading ? 'loading...' : 'Submit Votes!'}
+              </button>
+            )}
+          </div>
+        ) : null}
+      </div>
+    </>
   )
 }
 

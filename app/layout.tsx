@@ -2,10 +2,19 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.scss'
 
-import { Skranji } from 'next/font/google'
+import { Skranji, MedievalSharp, Pirata_One } from 'next/font/google'
+import Navbar from '@/components/Navbar'
 
 const skranji = Skranji({
   weight: ['400', '700'], // choose which weights you want
+  subsets: ['latin'],
+})
+const medievalSharp = MedievalSharp({
+  weight: ['400'], // choose which weights you want
+  subsets: ['latin'],
+})
+const pirataOne = Pirata_One({
+  weight: ['400'], // choose which weights you want
   subsets: ['latin'],
 })
 
@@ -21,7 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${skranji.className}`}>{children}</body>
+      <body className={`${pirataOne.className}`}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   )
 }

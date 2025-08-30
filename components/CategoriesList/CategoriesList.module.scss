@@ -1,0 +1,35 @@
+@use '@/styles/vars' as *;
+
+.CategoriesList {
+  // margin-top: 40px;
+  .contentCard {
+    position: relative;
+    // background: $paper-background;
+    // color: $green
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24 0;
+    // width: 100%;
+    .category {
+      // position:
+      font-size: $fs-regular;
+      $color: $green-text;
+      span {
+        position: absolute;
+        left: 24px;
+        font-size: $fs-small;
+        text-decoration: none;
+      }
+      &.active {
+        color: $secondary-green-text;
+      }
+      &.selected {
+        color: $green-text !important;
+        text-decoration: underline;
+      }
+    }
+  }
+}

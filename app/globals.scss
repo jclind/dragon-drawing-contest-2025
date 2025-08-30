@@ -31,6 +31,20 @@ body {
   font-weight: 200;
 }
 
+.page {
+  width: 100%;
+  padding: 60px 12px;
+  max-width: 500px;
+  margin: 0 auto;
+
+  h1 {
+    color: $primary-text;
+    width: 100%;
+    text-align: center;
+    font-size: $fs-large;
+  }
+}
+
 .card {
   background: linear-gradient(rgba(30, 30, 30, 0.6), rgba(20, 20, 20, 0.6));
   backdrop-filter: blur(20px) saturate(180%);
@@ -55,4 +69,17 @@ input {
 }
 
 button {
+}
+
+.background {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url('/images/home-background.webp');
+  background-size: cover; /* makes it fill the screen */
+  background-repeat: no-repeat; /* no tiling */
+  background-position: center; /* centers the image */
+  height: 100vh;
+  width: 100vw;
 }

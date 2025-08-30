@@ -1,4 +1,7 @@
-import { defaultUserVotes, UserVotesType } from '@/app/Submissions/Submissions'
+import {
+  defaultUserVotes,
+  UserVotesType,
+} from '@/components/Submissions/Submissions'
 
 const LS_USER_STRING = 'mateos_dragon_drawing_contest_user'
 

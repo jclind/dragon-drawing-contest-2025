@@ -1,5 +1,5 @@
 // lib/votes.ts
-import { UserVotesType } from '@/app/Submissions/Submissions'
+import { UserVotesType } from '@/components/Submissions/Submissions'
 import { db } from './firebase'
 import {
   doc,

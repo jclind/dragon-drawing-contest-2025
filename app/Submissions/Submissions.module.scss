@@ -1,0 +1,213 @@
+@use '@/styles/vars' as *;
+
+.Submissions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  h2 {
+    font-size: $fs-regular;
+  }
+  p.description {
+    font-size: $fs-small;
+    color: $secondary-text;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  p.categoryName {
+    font-size: $fs-small;
+    font-weight: 700;
+    margin-bottom: 24px;
+    background: $paper-background;
+    width: 100%;
+    color: #4e775b;
+    text-align: center;
+    padding: 8px;
+    font-size: $fs-regular;
+    span {
+      text-decoration: underline;
+    }
+    label {
+      font-weight: 700;
+      margin-right: 4px;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    .dragonItem {
+      padding: 12px;
+
+      background: $paper-background;
+      border-bottom: 1px solid #000000;
+
+      .imageContainer {
+        position: relative;
+        width: 100%;
+        .selectedCheck {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          right: 0;
+          transform: translate(20%, -20%);
+          background: $green-text;
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+        }
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .info {
+        color: $green-text;
+        font-size: $fs-small;
+        margin-top: 12px;
+        label {
+          margin-right: 4px;
+        }
+      }
+      button {
+        background: none;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        padding: 8px 0;
+        font-family: inherit;
+        width: 100%;
+        margin-top: 16px;
+      }
+      button.selected {
+        background: $green-text;
+        color: $primary-text;
+      }
+    }
+  }
+
+  .nextCategoryContainer {
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    width: 90%;
+    // background: $paper-background;
+    margin: 0 auto;
+    // border-radius: 8px;
+    // padding: 12px 0;
+    // border: 1px solid $border-color;
+    button {
+      background: $green-text;
+      color: $primary-text;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+  }
+  .registerVoterPage {
+    display: flex;
+    flex-direction: column;
+    h2 {
+      margin-bottom: 40px;
+    }
+    input {
+      width: 100%;
+      padding: 8px 8;
+      background: $paper-background;
+      font-family: inherit;
+      outline-offset: 0;
+      margin-bottom: 24px;
+      font-size: $fs-medium;
+    }
+    button {
+      background: $green-text;
+      color: $primary-text;
+      padding: 8px 0;
+      width: 100%;
+      font-size: $fs-medium;
+      &:disabled {
+        filter: grayscale(1);
+        color: $secondary-text;
+      }
+    }
+  }
+  .confirmPage {
+    h2 {
+      text-align: center;
+      margin-top: 16px;
+    }
+    .votes {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 24px;
+      margin-top: 40px;
+      .categoryVote {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: $paper-background;
+        padding: 8px;
+        label {
+          font-size: $fs-large;
+          color: $green-text;
+          margin-bottom: 16px;
+        }
+        .imageContainer {
+          position: relative;
+          width: 100%;
+
+          img {
+            width: 100%;
+            max-width: 50%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+  .leaderboardPage {
+    margin-top: 16px;
+    h2 {
+      text-align: center;
+      width: 100%;
+      margin-top: 48px;
+    }
+    .leaderboardList {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 24px;
+
+      .singleLeaderboard {
+        min-height: 180px;
+        background: $paper-background;
+        color: $green-text;
+        padding: 16px;
+
+        h3 {
+          margin-bottom: 16px;
+          font-size: $fs-large;
+          padding-bottom: 8px;
+          border-bottom: 1px solid $border-color;
+        }
+        ol {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          margin-left: 16px;
+        }
+        li {
+          float: left;
+        }
+      }
+    }
+  }
+}

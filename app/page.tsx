@@ -1,5 +1,3 @@
-import CategoriesList from '@/components/CategoriesList'
-import styles from './page.module.scss'
 import Submissions from '@/components/Submissions'
 
 export default function Home() {

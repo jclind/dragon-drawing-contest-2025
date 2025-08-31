@@ -8,7 +8,9 @@ const Navbar = () => {
       <div className={styles.inner}>
         <div className={styles.links}>
           <Link href='/'>Home</Link>
+          <span></span>
           <Link href='/leaderboard'>Leaderboard</Link>
+          <span></span>
           <Link href='/gallery'>Gallery</Link>
         </div>
       </div>

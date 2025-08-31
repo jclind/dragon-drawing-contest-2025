@@ -1,3 +1,5 @@
+'use client'
+
 import { categories } from '@/data/categories'
 import { UserVotesType } from './Submissions'
 import styles from './Submissions.module.scss'

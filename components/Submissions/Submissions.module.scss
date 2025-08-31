@@ -206,11 +206,23 @@
   }
 }
 .leaderboardPage {
-  margin-top: 16px;
+  width: 100%;
+  // margin-top: 8px;
+
+  .imageContainer {
+    max-width: 50%;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 32px;
+    img {
+      object-fit: contain;
+      width: 100%;
+    }
+  }
   h2 {
     text-align: center;
     width: 100%;
-    margin-top: 48px;
+    margin-top: 12px;
     font-size: $fs-medium;
   }
   .leaderboardList {
@@ -242,4 +254,15 @@
       }
     }
   }
+}
+
+.viewAllLink {
+  width: 100%;
+  background: $green-text;
+  color: $primary-text;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 24px;
+  text-decoration: none;
 }

@@ -1,19 +1,27 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.scss'
 
-import { Skranji, MedievalSharp, Pirata_One } from 'next/font/google'
+import {
+  Skranji,
+  MedievalSharp,
+  Pirata_One,
+  Caesar_Dressing,
+} from 'next/font/google'
 import Navbar from '@/components/Navbar'
 
-const skranji = Skranji({
-  weight: ['400', '700'], // choose which weights you want
-  subsets: ['latin'],
-})
-const medievalSharp = MedievalSharp({
-  weight: ['400'], // choose which weights you want
-  subsets: ['latin'],
-})
-const pirataOne = Pirata_One({
+// const skranji = Skranji({
+//   weight: ['400', '700'], // choose which weights you want
+//   subsets: ['latin'],
+// })
+// const medievalSharp = MedievalSharp({
+//   weight: ['400'], // choose which weights you want
+//   subsets: ['latin'],
+// })
+// const pirataOne = Pirata_One({
+//   weight: ['400'], // choose which weights you want
+//   subsets: ['latin'],
+// })
+const caesarDressing = Caesar_Dressing({
   weight: ['400'], // choose which weights you want
   subsets: ['latin'],
 })
@@ -30,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${pirataOne.className}`}>
+      <body className={`${caesarDressing.className}`}>
         <Navbar />
         {children}
       </body>

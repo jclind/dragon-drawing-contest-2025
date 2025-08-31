@@ -206,12 +206,14 @@
   }
 }
 .leaderboardPage {
+  width: 100%;
   // margin-top: 8px;
 
   .imageContainer {
     max-width: 50%;
     margin: 0 auto;
     margin-top: 40px;
+    margin-bottom: 32px;
     img {
       object-fit: contain;
       width: 100%;
@@ -220,7 +222,7 @@
   h2 {
     text-align: center;
     width: 100%;
-    margin-top: 48px;
+    margin-top: 12px;
     font-size: $fs-medium;
   }
   .leaderboardList {

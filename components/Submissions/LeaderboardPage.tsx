@@ -4,6 +4,7 @@ import { getTopVotes, VoteCount } from '@/lib/votes'
 import styles from './Submissions.module.scss'
 import { useEffect, useState } from 'react'
 import { categories } from '@/data/categories'
+import { usePathname } from 'next/navigation'
 
 const CategoryLeaderboard = ({ categoryID }: { categoryID: string }) => {
   const [topVotes, setTopVotes] = useState<VoteCount[]>([])
@@ -33,12 +34,19 @@ const CategoryLeaderboard = ({ categoryID }: { categoryID: string }) => {
 }
 
 const LeaderboardPage = () => {
+  const pathname = usePathname()
+
+  const isNotHome = pathname !== '/'
   return (
     <div className={styles.leaderboardPage}>
-      <h1>Your Votes Have Been Cast!</h1>
-      <div className={styles.imageContainer}>
-        <img src='/images/dragon-success.webp' alt='happy dragon' />
-      </div>
+      {!isNotHome && (
+        <>
+          <h1>Your Votes Have Been Cast!</h1>
+          <div className={styles.imageContainer}>
+            <img src='/images/dragon-success.webp' alt='happy dragon' />
+          </div>
+        </>
+      )}
       <h2>Category Leaderboards:</h2>
       <div className={styles.leaderboardList}>
         {/* <div className={styles.Leaderboards}></div> */}

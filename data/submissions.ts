@@ -57,4 +57,4 @@ export const submissions = [
     dragonDescription: '',
     imageSrc: `${submissionsPath}/jesse.webp`,
   },
-]
+].sort(() => Math.random() - 0.5)

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './Submissions.module.scss'
 import { submissions } from '@/data/submissions'
 import { Check, ChevronDown, ChevronUp } from 'lucide-react'
-import { getTopVotes, submitUserVotes, VoteCount } from '@/lib/votes'
+import { submitUserVotes } from '@/lib/votes'
 import { categories, CategoryType } from '@/data/categories'
 import LeaderboardPage from './LeaderboardPage'
 import RegisterVoterPage from './RegisterVoterPage'
@@ -16,6 +16,7 @@ import {
   hasUserCastVotes,
 } from '@/util/localStorageFns'
 import CategoriesList from '../CategoriesList'
+import Link from 'next/link'
 
 export type UserVotesType = { id: string; votedOnDragonID: string | null }
 
@@ -154,8 +155,13 @@ const Submissions = () => {
     <>
       {/* <CategoriesList selectedCategory={currCategory} /> */}
       <div className={`${styles.Submissions} card`}>
-        {hasVoted ? (
-          <LeaderboardPage />
+        {hasVoted || isLeaderboardPage ? (
+          <>
+            <LeaderboardPage />
+            <Link href='/gallery' className={styles.viewAllLink}>
+              View All Submissions
+            </Link>
+          </>
         ) : !localStorageUserExists ? (
           <RegisterVoterPage
             setLocalStorageUserExists={setLocalStorageUserExists}
@@ -163,7 +169,10 @@ const Submissions = () => {
         ) : isConfirmPage ? (
           <ConfirmVotesPage userVotes={userVotes} />
         ) : isLeaderboardPage ? (
-          <LeaderboardPage />
+          <>
+            <LeaderboardPage />
+            hello testing
+          </>
         ) : (
           <>
             <h2 className={styles.submissionsTitle}>Submissions</h2>

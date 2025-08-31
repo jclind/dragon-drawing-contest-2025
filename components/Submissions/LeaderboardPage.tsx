@@ -1,3 +1,5 @@
+'use client'
+
 import { getTopVotes, VoteCount } from '@/lib/votes'
 import styles from './Submissions.module.scss'
 import { useEffect, useState } from 'react'
@@ -34,6 +36,9 @@ const LeaderboardPage = () => {
   return (
     <div className={styles.leaderboardPage}>
       <h1>Your Votes Have Been Cast!</h1>
+      <div className={styles.imageContainer}>
+        <img src='/images/dragon-success.webp' alt='happy dragon' />
+      </div>
       <h2>Category Leaderboards:</h2>
       <div className={styles.leaderboardList}>
         {/* <div className={styles.Leaderboards}></div> */}

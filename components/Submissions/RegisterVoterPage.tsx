@@ -1,3 +1,5 @@
+'use client'
+
 import { createLocalStorageUser } from '@/util/localStorageFns'
 import { useState } from 'react'
 import styles from './Submissions.module.scss'

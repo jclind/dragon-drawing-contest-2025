@@ -148,25 +148,11 @@ const Submissions = () => {
       })
   }
 
-  const [storageDump, setStorageDump] = useState<string>('')
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        setStorageDump(JSON.stringify(localStorage))
-      } catch (e) {
-        console.error('Error accessing localStorage:', e)
-      }
-    }
-  }, [])
-
   const showVotingToolbar =
     (castVoteID || !isFirstCategory) && !isLeaderboardPage
 
   return (
     <>
-      {storageDump}
-      {/* <CategoriesList selectedCategory={currCategory} /> */}
       <div className={`${styles.Submissions} card`}>
         {hasVoted || isLeaderboardPage ? (
           <>

@@ -18,12 +18,22 @@ const RegisterVoterPage = ({
     setLocalStorageUserExists(true)
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSetUserName()
+    }
+  }
+
   return (
     <div className={styles.registerVoterPage}>
       <h2>Enter Your Voter Name</h2>
       test: {test}
       <div>
-        <input value={userName} onChange={e => setUserName(e.target.value)} />
+        <input
+          value={userName}
+          onChange={e => setUserName(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
         <button
           onClick={e => {
             e.preventDefault()

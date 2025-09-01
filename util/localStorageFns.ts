@@ -57,6 +57,3 @@ export const hasUserCastVotes = () => {
     vote => vote.votedOnDragonID !== null && vote.votedOnDragonID !== ''
   )
 }
-function uuid() {
-  throw new Error('Function not implemented.')
-}

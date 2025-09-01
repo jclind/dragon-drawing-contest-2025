@@ -20,6 +20,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   max-width: 100vw;
+  background: #100e19;
 }
 
 body {
@@ -71,17 +72,17 @@ input {
 
 button {
   font-size: $fs-small;
+  color: $primary-text;
 }
 
 .background {
   z-index: -1;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0 */
   background-image: url('/images/home-background.webp');
-  background-size: cover; /* makes it fill the screen */
-  background-repeat: no-repeat; /* no tiling */
-  background-position: center; /* centers the image */
-  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh; /* dynamic viewport height */
   width: 100vw;
 }

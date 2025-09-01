@@ -10,6 +10,7 @@ const RegisterVoterPage = ({
   setLocalStorageUserExists: (val: boolean) => void
 }) => {
   const [userName, setUserName] = useState('')
+  const [test, setTest] = useState('')
 
   const handleSetUserName = () => {
     if (!userName) return
@@ -20,12 +21,20 @@ const RegisterVoterPage = ({
   return (
     <div className={styles.registerVoterPage}>
       <h2>Enter Your Voter Name</h2>
-      <form action=''>
+      test: {test}
+      <div>
         <input value={userName} onChange={e => setUserName(e.target.value)} />
-        <button onClick={handleSetUserName} disabled={!userName}>
+        <button
+          onClick={e => {
+            e.preventDefault()
+            setTest('What?')
+            handleSetUserName()
+          }}
+          disabled={!userName}
+        >
           Confirm Name
         </button>
-      </form>
+      </div>
     </div>
   )
 }

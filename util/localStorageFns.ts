@@ -1,9 +1,12 @@
+'use client'
+
 import {
   defaultUserVotes,
   UserVotesType,
 } from '@/components/Submissions/Submissions'
+import { v4 as uuidv4 } from 'uuid'
 
-const LS_USER_STRING = 'mateos_dragon_drawing_contest_user'
+const LS_USER_STRING = 'mateos_dragon_drawing_contest_user_v2'
 
 type LSUserType = {
   id: string
@@ -31,7 +34,7 @@ export const getUserVotesFromLocalStorage = () => {
 
 export const createLocalStorageUser = (name: string) => {
   const newUser = {
-    id: crypto.randomUUID(), // generates unique ID
+    id: uuidv4(), // generates unique ID
     name,
     votes: defaultUserVotes, // empty votes by default
     createdAt: new Date().toISOString(),
@@ -53,4 +56,7 @@ export const hasUserCastVotes = () => {
   return user.votes.every(
     vote => vote.votedOnDragonID !== null && vote.votedOnDragonID !== ''
   )
+}
+function uuid() {
+  throw new Error('Function not implemented.')
 }

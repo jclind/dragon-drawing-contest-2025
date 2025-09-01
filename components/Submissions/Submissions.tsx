@@ -153,7 +153,6 @@ const Submissions = () => {
 
   return (
     <>
-      {/* <CategoriesList selectedCategory={currCategory} /> */}
       <div className={`${styles.Submissions} card`}>
         {hasVoted || isLeaderboardPage ? (
           <>

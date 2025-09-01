@@ -32,7 +32,7 @@
       background: none;
       width: 100%;
       padding: 8px;
-      color: #4e775b;
+      color: $green-text;
       text-align: center;
       font-size: $fs-regular;
       padding-right: 40px;
@@ -101,6 +101,8 @@
         font-family: inherit;
         width: 100%;
         margin-top: 16px;
+        color: $green-text;
+        font-size: $fs-regular;
       }
       button.selected {
         background: $green-text;
@@ -109,39 +111,6 @@
     }
   }
 
-  .nextCategoryContainer {
-    display: flex;
-    justify-content: space-evenly;
-    position: fixed;
-    bottom: 24px;
-    left: 0;
-    right: 0;
-    width: 90%;
-    // background: $paper-background;
-    margin: 0 auto;
-    max-width: 400px;
-
-    // border-radius: 8px;
-    // padding: 12px 0;
-    // border: 1px solid $border-color;
-    button {
-      background: $green-text;
-      color: $primary-text;
-      border: 1px solid $border-color;
-      border-radius: 8px;
-      padding: 8px 12px;
-    }
-
-    @media (min-width: 500px) {
-      background: $paper-background;
-      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-      padding: 12px 0;
-      border: 2px solid $green-text;
-      button {
-        padding: 12px 16px;
-      }
-    }
-  }
   .registerVoterPage {
     display: flex;
     flex-direction: column;
@@ -265,4 +234,38 @@
   border-radius: 8px;
   margin-top: 24px;
   text-decoration: none;
+}
+
+.nextCategoryContainer {
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  width: 90%;
+  // background: $paper-background;
+  margin: 0 auto;
+  max-width: 400px;
+
+  // border-radius: 8px;
+  // padding: 12px 0;
+  // border: 1px solid $border-color;
+  button {
+    background: $green-text;
+    color: $primary-text;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+
+  @media (min-width: 500px) {
+    background: $paper-background;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    padding: 12px 0;
+    border: 2px solid $green-text;
+    button {
+      padding: 12px 16px;
+    }
+  }
 }

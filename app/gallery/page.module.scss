@@ -43,6 +43,9 @@
       }
     }
     .info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
       color: $green-text;
       font-size: $fs-small;
       margin-top: 12px;

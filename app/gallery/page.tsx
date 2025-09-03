@@ -19,6 +19,18 @@ const GalleryPage = () => {
                   <label htmlFor=''>Artist:</label>
                   <span>{dragon.creator}</span>
                 </div>
+                {dragon.dragonName && (
+                  <div className={styles.row}>
+                    <label htmlFor=''>Dragon Name:</label>
+                    <span>{dragon.dragonName}</span>
+                  </div>
+                )}
+                {dragon.dragonDescription && (
+                  <div className={styles.row}>
+                    <label htmlFor=''>Dragon Description:</label>
+                    <span>{dragon.dragonDescription}</span>
+                  </div>
+                )}
               </div>
             </div>
           )

@@ -13,18 +13,18 @@ import Navbar from '@/components/Navbar'
 //   weight: ['400', '700'], // choose which weights you want
 //   subsets: ['latin'],
 // })
-// const medievalSharp = MedievalSharp({
-//   weight: ['400'], // choose which weights you want
-//   subsets: ['latin'],
-// })
+const medievalSharp = MedievalSharp({
+  weight: ['400'], // choose which weights you want
+  subsets: ['latin'],
+})
 // const pirataOne = Pirata_One({
 //   weight: ['400'], // choose which weights you want
 //   subsets: ['latin'],
 // })
-const caesarDressing = Caesar_Dressing({
-  weight: ['400'], // choose which weights you want
-  subsets: ['latin'],
-})
+// const caesarDressing = Caesar_Dressing({
+//   weight: ['400'], // choose which weights you want
+//   subsets: ['latin'],
+// })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -44,7 +44,7 @@ export default function RootLayout({
       <head>
         <meta name='theme-color' content='#39ff14' />
       </head>
-      <body className={`${caesarDressing.className}`}>
+      <body className={`${medievalSharp.className}`}>
         <Navbar />
         {children}
         <div className='background'></div>

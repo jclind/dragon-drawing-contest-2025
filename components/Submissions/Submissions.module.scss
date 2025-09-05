@@ -89,6 +89,24 @@
           object-fit: contain;
         }
       }
+      .dragonName {
+        font-size: $fs-large;
+        text-align: center;
+        color: $green-text;
+        margin-top: 16px;
+      }
+      .artist {
+        // color: $green-text;
+        font-size: $fs-regular;
+        margin: 0 auto;
+        text-align: center;
+        color: $secondary-green-text;
+        margin-bottom: 32px;
+        label {
+          margin-right: 4px;
+          font-size: $fs-small;
+        }
+      }
       .info {
         display: flex;
         flex-direction: column;
@@ -96,8 +114,12 @@
         color: $green-text;
         font-size: $fs-small;
         margin-top: 12px;
+        margin-bottom: 12px;
+        line-height: 1.6;
         label {
-          margin-right: 4px;
+          margin-right: 16px;
+          text-transform: uppercase;
+          color: $secondary-green-text;
         }
       }
       button {

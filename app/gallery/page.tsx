@@ -14,23 +14,29 @@ const GalleryPage = () => {
               <div className={styles.imageContainer}>
                 <img src={dragon.imageSrc} alt='' />
               </div>
+              <div className={styles.dragonName}>{dragon.dragonName}</div>
+              <div className={styles.artist}>
+                <label htmlFor=''>drawn by </label>
+                <span>{dragon.creator}</span>
+              </div>
               <div className={styles.info}>
-                <div className={styles.row}>
-                  <label htmlFor=''>Artist:</label>
-                  <span>{dragon.creator}</span>
-                </div>
-                {dragon.dragonName && (
-                  <div className={styles.row}>
-                    <label htmlFor=''>Dragon Name:</label>
-                    <span>{dragon.dragonName}</span>
-                  </div>
-                )}
                 {dragon.dragonDescription && (
-                  <div className={styles.row}>
-                    <label htmlFor=''>Dragon Description:</label>
+                  <div className={`${styles.row} ${styles.description}`}>
+                    <label htmlFor=''>Description:</label>
                     <span>{dragon.dragonDescription}</span>
                   </div>
                 )}
+                {dragon.dragonInfo?.map(stat => {
+                  return (
+                    <div
+                      className={`${styles.row} ${styles.stat}`}
+                      key={stat.key}
+                    >
+                      <label htmlFor=''>{stat.key}:</label>
+                      <span>{stat.value}</span>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           )

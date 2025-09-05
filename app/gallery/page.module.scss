@@ -19,11 +19,13 @@
     padding: 12px;
 
     background: $paper-background;
-    border-bottom: 1px solid #000000;
+    max-width: 1000px;
+    margin: 0 auto;
 
     .imageContainer {
       position: relative;
       width: 100%;
+
       .selectedCheck {
         display: flex;
         justify-content: center;
@@ -42,12 +44,39 @@
         object-fit: contain;
       }
     }
-    .info {
+    .dragonName {
+      font-size: $fs-large;
+      text-align: center;
       color: $green-text;
-      font-size: $fs-small;
-      margin-top: 12px;
+      margin-top: 16px;
+    }
+    .artist {
+      // color: $green-text;
+      font-size: $fs-regular;
+      margin: 0 auto;
+      text-align: center;
+      color: $secondary-green-text;
+      margin-bottom: 32px;
       label {
         margin-right: 4px;
+        font-size: $fs-small;
+      }
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      color: $green-text;
+      font-size: $fs-small;
+      max-width: 500px;
+      margin: 0 auto;
+      margin-top: 12px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+      label {
+        margin-right: 16px;
+        text-transform: uppercase;
+        color: $secondary-green-text;
       }
     }
     button {

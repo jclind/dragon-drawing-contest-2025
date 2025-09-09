@@ -254,27 +254,35 @@ const Submissions = () => {
       </div>
       {showVotingToolbar ? (
         <div className={`${styles.nextCategoryContainer} card`}>
-          {!isFirstCategory && (
-            <button
-              disabled={loading}
-              onClick={() => handlePrevCategoryClick(currCategory)}
-            >
-              Prev Category
-            </button>
-          )}
-          {castVoteID && !isConfirmPage && (
-            <button
-              disabled={loading}
-              onClick={() => handleNextCategoryClick(currCategory)}
-            >
-              {isLastCategory ? 'Confirm Votes Page' : 'Next Category'}
-            </button>
-          )}
-          {isConfirmPage && (
-            <button disabled={loading} onClick={handleSubmitVotes}>
-              {loading ? 'loading...' : 'Submit Votes!'}
-            </button>
-          )}
+          <div className={styles.buttonBar}>
+            {!isFirstCategory && (
+              <button
+                disabled={loading}
+                onClick={e => {
+                  e.stopPropagation()
+                  handlePrevCategoryClick(currCategory)
+                }}
+              >
+                Prev Category
+              </button>
+            )}
+            {castVoteID && !isConfirmPage && (
+              <button
+                disabled={loading}
+                onClick={e => {
+                  e.stopPropagation()
+                  handleNextCategoryClick(currCategory)
+                }}
+              >
+                {isLastCategory ? 'Votes Overview' : 'Next Category'}
+              </button>
+            )}
+            {isConfirmPage && (
+              <button disabled={loading} onClick={handleSubmitVotes}>
+                {loading ? 'loading...' : 'Submit Votes!'}
+              </button>
+            )}
+          </div>
         </div>
       ) : null}
     </>

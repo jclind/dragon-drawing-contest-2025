@@ -276,6 +276,12 @@
   // background: $paper-background;
   margin: 0 auto;
   max-width: 400px;
+  .buttonBar {
+    display: flex;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
 
   // border-radius: 8px;
   // padding: 12px 0;

@@ -5,6 +5,7 @@ import styles from './Submissions.module.scss'
 import { useEffect, useState } from 'react'
 import { categories } from '@/data/categories'
 import { usePathname } from 'next/navigation'
+import { submissions } from '@/data/submissions'
 
 const CategoryLeaderboard = ({ categoryID }: { categoryID: string }) => {
   const [topVotes, setTopVotes] = useState<VoteCount[]>([])
@@ -35,11 +36,17 @@ const CategoryLeaderboard = ({ categoryID }: { categoryID: string }) => {
     <div className={styles.singleLeaderboard}>
       <h3>{categoryName}</h3>
       <ol>
-        {topVotes.map(v => (
-          <li key={v.dragonId}>
-            {v.dragonId} — {v.count} vote{v.count > 1 ? 's' : ''}
-          </li>
-        ))}
+        {topVotes.map(v => {
+          const dragonID = v.dragonId
+          const dragonName =
+            submissions.find(d => d.id === dragonID)?.dragonName || ''
+          return (
+            <li key={v.dragonId}>
+              {dragonName} ({v.dragonId}) — {v.count} vote
+              {v.count > 1 ? 's' : ''}
+            </li>
+          )
+        })}
       </ol>
     </div>
   )

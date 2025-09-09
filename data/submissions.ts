@@ -113,4 +113,12 @@ Weapons: laser machine and spiked tail`,
     dragonInfo: [{ key: 'food', value: 'Other dragons and rats.' }],
     imageSrc: `${submissionsPath}/peter.webp`,
   },
+  {
+    id: 'david',
+    creator: 'David',
+    dragonName: 'Fatbelly',
+    dragonDescription: `Fatbelly is very big because it eats more than you think. It chomps up houses, demolishes hotels and then poops them out in fireballs. Occasionally the fireballs go into the sea, but more likely they roll over a house. Nobody has ever seen it except for me. It breaths fire. Its only enemies are Frogmouth and Bigpouch, but they also run from Fatbelly sometimes (although mostly they attack).`,
+    dragonInfo: [],
+    imageSrc: `${submissionsPath}/david.webp`,
+  },
 ].sort(() => Math.random() - 0.5)

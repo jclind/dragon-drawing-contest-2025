@@ -6,7 +6,7 @@ import {
 } from '@/components/Submissions/Submissions'
 import { v4 as uuidv4 } from 'uuid'
 
-const LS_USER_STRING = 'mateos_dragon_drawing_contest_user_v4'
+const LS_USER_STRING = 'mateos_dragon_drawing_contest_user_v5'
 
 type LSUserType = {
   id: string

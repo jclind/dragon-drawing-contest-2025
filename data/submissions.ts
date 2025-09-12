@@ -14,8 +14,13 @@ export const submissions: SubmissionsType[] = [
     id: 'christa',
     creator: 'Christa',
     dragonName: 'The Cloud Gem',
-    dragonDescription: '',
-    dragonInfo: [],
+    dragonDescription:
+      'This very rare dragon is the fairy godmother of little dragons. She is almost impossible to spot in the sky and spends her time flying around the world to help little dragons in need. ',
+    dragonInfo: [
+      { key: 'Skills', value: 'making wishes come true' },
+      { key: 'Enemies', value: 'lightening and the tornado dragon' },
+      { key: 'Weakness', value: 'emeralds' },
+    ],
     imageSrc: `${submissionsPath}/christa.webp`,
   },
   {

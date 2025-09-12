@@ -1,2 +1,2 @@
-- [ ] add counter for amount of categories
-- [] set up firebase env in netlify
+- [x] add counter for amount of categories
+- [x] set up firebase env in netlify
